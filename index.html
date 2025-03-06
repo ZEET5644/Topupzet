@@ -16,6 +16,10 @@
         .popup button { background: red; color: white; border: none; padding: 10px; cursor: pointer; }
         .popup .lanjut { background: green; font-size: 12px; padding: 6px; margin-top: 10px; display: block; width: 60%; margin-left: auto; margin-right: auto; }
         img { width: 100%; border-radius: 10px; }
+
+        .admin-choice { margin-top: 10px; }
+        .admin-choice a { display: block; padding: 10px; margin: 5px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 4px; }
+        .admin-choice a:hover { background-color: #45a049; }
     </style>
 </head>
 <body>
@@ -44,7 +48,8 @@
     <!-- Halaman Kontak -->
     <section id="kontak">
         <h2>📞 Kontak Kami</h2>
-        <p>📲 WhatsApp: <a href="https://wa.me/62895602220906" target="_blank">Klik Disini</a></p>
+        <p>📲 WhatsApp 1: <a href="https://wa.me/62895602220906" target="_blank">Klik Disini</a></p>
+        <p>📲 WhatsApp 2: <a href="https://wa.me/62895352140495" target="_blank">Klik Disini</a></p>
         <p>📩 Telegram: <a href="https://t.me/Killertzy" target="_blank">Klik Disini</a></p>
         <p style="color: yellow; font-size: 14px;">Jangan lupa SS formulir dan kasih bukti pembayaran serta minta berapa diamond/membership, nanti admin akan memberikan listnya.</p>
     </section>
@@ -52,7 +57,7 @@
     <!-- Popup Gambar Harga Free Fire -->
     <div id="ffPopup" class="popup">
         <h2>💎 Harga Diamond Free Fire</h2>
-        <img src="harga_ff.jpg" alt="Daftar Harga Free Fire">
+        <img src="https://via.placeholder.com/350x150?text=Harga+Free+Fire" alt="Daftar Harga Free Fire">
         <button onclick="closeFFPopup()">❌ Tutup</button>
         <button class="lanjut" onclick="showPaymentInstructions()">✅ Lanjut ke Pembayaran</button>
     </div>
@@ -70,43 +75,50 @@
         <button class="lanjut" onclick="redirectToForm()">✅ Lanjut ke Formulir</button>
     </div>
 
-    <!-- Popup Formulir Selesai -->
+    <!-- Popup Formulir Pengisian -->
     <div id="formPopup" class="popup">
+        <h2>✅ Formulir Top Up</h2>
+        <iframe src="https://forms.gle/FbKjYdFD8nDrUrXEA" frameborder="0"></iframe>
+        <button onclick="closeFormPopup()" class="lanjut">❌ Tutup</button>
+        <button onclick="showAdminChoice()" class="lanjut">➡ Lanjut ke WhatsApp Admin</button>
+        <p>Kirim bukti transfer (TF) dan screenshot (SS) bukti pengisian formulir agar bisa langsung diproses oleh admin.</p>
+    </div>
+
+    <!-- Pilihan Admin -->
+    <div id="adminChoicePopup" class="popup">
+        <h2>📲 Pilih Admin untuk Melanjutkan:</h2>
+        <div class="admin-choice">
+            <a href="https://wa.me/62895602220906" target="_blank">Admin 1 (Kurang Fast Response)</a>
+            <a href="https://wa.me/62895352140495" target="_blank">Admin 2 (Fast Response)</a>
+        </div>
+        <button onclick="closeAdminChoice()" class="lanjut">❌ Tutup</button>
+    </div>
+
+    <!-- Popup Formulir Selesai -->
+    <div id="formSuccessPopup" class="popup">
         <h2>✅ Formulir Telah Dikirim!</h2>
         <p>Silakan lanjut ke halaman kontak kami untuk konfirmasi pembayaran.</p>
         <button class="lanjut" onclick="redirectToKontak()">➡ Lanjut ke Halaman Kontak</button>
     </div>
 
     <script>
-        function showPage(page) {
-            document.querySelectorAll('section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(page).classList.add('active');
-        }
-
+        // Fungsi untuk menampilkan pop-up harga Free Fire
         function showFFPopup() {
-            document.getElementById('ffPopup').style.display = 'block';
+            document.getElementById("ffPopup").style.display = "block"; // Menampilkan pop-up
         }
 
+        // Fungsi untuk menutup pop-up harga Free Fire
         function closeFFPopup() {
-            document.getElementById('ffPopup').style.display = 'none';
+            document.getElementById("ffPopup").style.display = "none"; // Menyembunyikan pop-up
         }
 
+        // Fungsi untuk menampilkan instruksi pembayaran setelah menutup pop-up FF
         function showPaymentInstructions() {
-            document.getElementById('ffPopup').style.display = 'none';
-            document.getElementById('paymentPopup').style.display = 'block';
+            document.getElementById("paymentPopup").style.display = "block"; // Menampilkan pop-up pembayaran
+            closeFFPopup(); // Menyembunyikan pop-up harga FF setelah lanjut ke pembayaran
         }
 
+        // Fungsi untuk menampilkan halaman formulir
         function redirectToForm() {
-            // Setelah pelanggan melakukan pembayaran, lanjutkan ke formulir
-            window.location.href = 'https://forms.gle/FbKjYdFD8nDrUrXEA';
-        }
-
-        function redirectToKontak() {
-            document.getElementById('formPopup').style.display = 'none';
-            showPage('kontak');
-        }
-    </script>
-</body>
-</html>
+            document.getElementById("formPopup").style.display = "block"; // Menampilkan pop-up formulir
+            document.getElementById("
