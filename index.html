@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeet Hosting - Top Up Game</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #1e2b32; color: white; text-align: center; }
+        header { background: #142024; padding: 10px; }
+        nav ul { list-style: none; padding: 0; }
+        nav ul li { display: inline; margin: 0 10px; }
+        nav ul li a { color: white; text-decoration: none; font-weight: bold; }
+        section { display: none; padding: 20px; }
+        section.active { display: block; }
+        .popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #222; padding: 20px; border-radius: 10px; text-align: center; width: 80%; max-width: 400px; }
+        .popup button { background: red; color: white; border: none; padding: 10px; cursor: pointer; }
+        .popup .lanjut { background: green; font-size: 12px; padding: 6px; margin-top: 10px; display: block; width: 60%; margin-left: auto; margin-right: auto; }
+        img { width: 100%; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🔥 Zeet Hosting - Top Up Game Termurah 🔥</h1>
+        <p>⚡ Cepat, Aman, dan Terpercaya! ⚡</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showPage('home')">🏠 Home</a></li>
+            <li><a href="#" onclick="showPage('kontak')">📞 Kontak</a></li>
+        </ul>
+    </nav>
+
+    <!-- Halaman Home -->
+    <section id="home" class="active">
+        <h2>Rekomendasi Top Up</h2>
+        <div class="game-list">
+            <a href="#" onclick="showFFPopup()"><p>Free Fire</p></a>
+            <a href="#"><p style="color: red;">Produk Sedang Sold Out (PUBG)</p></a>
+            <a href="#"><p style="color: red;">Produk Sedang Sold Out (Mobile Legends)</p></a>
+        </div>
+    </section>
+
+    <!-- Halaman Kontak -->
+    <section id="kontak">
+        <h2>📞 Kontak Kami</h2>
+        <p>📲 WhatsApp: <a href="https://wa.me/62895602220906" target="_blank">Klik Disini</a></p>
+        <p>📩 Telegram: <a href="https://t.me/Killertzy" target="_blank">Klik Disini</a></p>
+        <p style="color: yellow; font-size: 14px;">Jangan lupa SS formulir dan kasih bukti pembayaran serta minta berapa diamond/membership, nanti admin akan memberikan listnya.</p>
+    </section>
+
+    <!-- Popup Gambar Harga Free Fire -->
+    <div id="ffPopup" class="popup">
+        <h2>💎 Harga Diamond Free Fire</h2>
+        <img src="harga_ff.jpg" alt="Daftar Harga Free Fire">
+        <button onclick="closeFFPopup()">❌ Tutup</button>
+        <button class="lanjut" onclick="showPaymentInstructions()">✅ Lanjut ke Pembayaran</button>
+    </div>
+
+    <!-- Popup Pembayaran -->
+    <div id="paymentPopup" class="popup">
+        <h2>*__PAYMENT ZEET HOSTING__* 💳🌈</h2>
+        <p>Silakan transfer ke salah satu rekening berikut:</p>
+        <p><strong>DANA:</strong> 0895602220906 <br><strong>A/N:</strong> Ya*** Suh*****</p>
+        <p><strong>GOPAY:</strong> 0895602220906 <br><strong>A/N:</strong> Z*** S**</p>
+        <p><strong>OVO:</strong> 0895352140495 <br><strong>A/N:</strong> Z*** S**</p>
+        <p><strong>QRIS:</strong></p>
+        <img src="https://files.catbox.moe/zc9x4l.jpg" alt="QRIS Zeet Hosting">
+        <p><em>NB: JIKA SUDAH TF, SILAHKAN SS BUKTI TF DAN SS NYA DI BAGIAN DETAIL TRX JIKA BUKAN SS DI DETAIL TRX TERUS TF DI QRIS. MAAP GABISA NERIMA.</em></p>
+        <button class="lanjut" onclick="redirectToForm()">✅ Lanjut ke Formulir</button>
+    </div>
+
+    <!-- Popup Formulir Selesai -->
+    <div id="formPopup" class="popup">
+        <h2>✅ Formulir Telah Dikirim!</h2>
+        <p>Silakan lanjut ke halaman kontak kami untuk konfirmasi pembayaran.</p>
+        <button class="lanjut" onclick="redirectToKontak()">➡ Lanjut ke Halaman Kontak</button>
+    </div>
+
+    <script>
+        function showPage(page) {
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(page).classList.add('active');
+        }
+
+        function showFFPopup() {
+            document.getElementById('ffPopup').style.display = 'block';
+        }
+
+        function closeFFPopup() {
+            document.getElementById('ffPopup').style.display = 'none';
+        }
+
+        function showPaymentInstructions() {
+            document.getElementById('ffPopup').style.display = 'none';
+            document.getElementById('paymentPopup').style.display = 'block';
+        }
+
+        function redirectToForm() {
+            // Setelah pelanggan melakukan pembayaran, lanjutkan ke formulir
+            window.location.href = 'https://forms.gle/FbKjYdFD8nDrUrXEA';
+        }
+
+        function redirectToKontak() {
+            document.getElementById('formPopup').style.display = 'none';
+            showPage('kontak');
+        }
+    </script>
+</body>
+</html>
